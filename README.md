@@ -42,6 +42,21 @@ We built DTDL-Customercare using the following key components:
  <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s7ix21rlsmfkb5d4zeop.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s7ix21rlsmfkb5d4zeop.gif" width="1700">
  </a>
 
+## Screenshots 
+
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif" width="1700">
+ </a>
+
+ 
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png" width="1700">
+ </a>
+
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" width="1700">
+ </a>
+
  ## Data Flow
 
 ### Document Intelligence Process
