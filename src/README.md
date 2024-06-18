@@ -1,78 +1,106 @@
-## Problem statement
+## Langchain Agents
 
-Lately, many clients have shown a keen interest in exploring the capabilities of LLMs/SLMs by addressing various challenges. This sparked a discussion with my current client about enhancing operational efficiency in the customer care department. However, other priorities soon took precedence, and the project was put on hold. It wasn't until I recently heard about a hackathon focused on AI solutions that my desire to tackle this challenge was reignited.
+Langchain is a open-source framework that simplifies the development of LLM applications. It is all about having set of tools and abstractions that makes it easy to integrate LLM into your workflows, connect them to external data sources and build complex applciations.
 
-I chose customer service as my problem statement because it's something many of us can easily relate to. My idea is to build a smart, autonomous assistant that can handle customer queries, such as answering FAQs, and intelligently respond to questions about past orders without the need for long waits or multiple transfers. A key focus was ensuring this assistant could verify users and provide personalized information securely.
-
-<a class="lightgallery" href="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3B0dmxuYmx0djh0ZXRibHE1bm9pdnB4cGVnZnU1aXdpZTQ5Z3R1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3rgXBBaVvhPXk3NSnK/giphy.webp" title="Image description" data-thumbnail="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3B0dmxuYmx0djh0ZXRibHE1bm9pdnB4cGVnZnU1aXdpZTQ5Z3R1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3rgXBBaVvhPXk3NSnK/giphy.webp">
- <img class="lazyautosizes lazyloaded" data-src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3B0dmxuYmx0djh0ZXRibHE1bm9pdnB4cGVnZnU1aXdpZTQ5Z3R1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3rgXBBaVvhPXk3NSnK/giphy.webp" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3B0dmxuYmx0djh0ZXRibHE1bm9pdnB4cGVnZnU1aXdpZTQ5Z3R1dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3rgXBBaVvhPXk3NSnK/giphy.webp" width="700">
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/372d9ry1rx7ptzezagk6.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/372d9ry1rx7ptzezagk6.png">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/372d9ry1rx7ptzezagk6.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/372d9ry1rx7ptzezagk6.png" width="1000">
  </a>
 
-Imagine a customer needing to check the status of their last order. With our assistant, they could simply input their query, receive an OTP on their phone, and verify their identity securely. The assistant would then fetch the details from the database and provide the information instantly. No more waiting on hold, no more frustration.
+Langchain Agents are key component of the framework enabling LLMs to acts as reasoning engines. Agents use LLM to determine the best course of action based on user input and available tools. This helps us to build autonomous applications.
 
-## Solution 
-
-I wanted to tackle this challenge by leveraging LangChain Agent to build an autonomous solution with minimal human intervention. The core idea behind agents is to use a language model to determine a sequence of actions to take, unlike traditional chains where the sequence is hardcoded. LangChain Agents act as reasoning engines, deciding which actions to take and in what order, making the system both flexible and intelligent. For instance, if a customer asks about their last order, the agent can simultaneously initiate OTP authentication, query the database for order details, and handle any additional requests in the proper sequence. This ensures that each task is executed efficiently and accurately.
-
-> "In the movie "The Matrix," Agent Smith famously says, "Human beings are a disease, a cancer of this planet. You are a plague, and we are the cure." <br />I believe that is where we are heading these days with multi agents taking over"
+For more info visit <a href="https://python.langchain.com/v0.1/docs/modules/agents/concepts/">here</a>
 
 
-<a class="lightgallery" href="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjgxMTd5ZmlvZDMxYWxkNDBsOTl0aXhvaXdhZnE3OGZrN3hzaWV6MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OS0HFk7Fmkdqw/giphy.webp" title="Image description" data-thumbnail="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjgxMTd5ZmlvZDMxYWxkNDBsOTl0aXhvaXdhZnE3OGZrN3hzaWV6MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OS0HFk7Fmkdqw/giphy.webp">
- <img class="lazyautosizes lazyloaded" data-src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjgxMTd5ZmlvZDMxYWxkNDBsOTl0aXhvaXdhZnE3OGZrN3hzaWV6MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OS0HFk7Fmkdqw/giphy.webp" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjgxMTd5ZmlvZDMxYWxkNDBsOTl0aXhvaXdhZnE3OGZrN3hzaWV6MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OS0HFk7Fmkdqw/giphy.webp" width="700">
+## Function calling
+
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif" width="1700">
  </a>
 
-Bringing this idea to life was not an easy task. It required seamlessly integrating various technologies. We used OTP authentication for secure user verification, Twilio API to send OTPs, and Azure Cosmos DB to store and verify customer information. The challenge was to make this process smooth and autonomous, ensuring customers received quick and accurate responses without compromising security. We utilized Azure Cosmos DB for MongoDB vCore's vector search capability to retrieve relevant documents when a customer asks a query.
 
-We set up two vector indexes: one for retrieving relevant product information from our product collection and another based on FAQs. Using Azure Document Intelligence Service, we retrieved information from existing FAQ PDFs, created a data ingestor to chunk the data, and generated embeddings in our database.
+Latest version of GPT models are fine-tuned to understand and work with functions and have the reasoning engine to enable LLM to decide when and how a function should be called. Say for example if there are more than one function included in the request, model determines which to call based on the context of the prompt.
 
-This approach transforms customer service by creating a smart, autonomous assistant that operates with high efficiency and minimal delay. The integration of LangChain Agent with Azure Cosmos DB, Twilio API, and Azure Document Intelligence Service ensures a robust, secure, and intelligent solution for handling customer queries.
+This allows us to connect with external data source and bring in more context to the LLM securely.
 
-Through the DTDL-CustomerCare series, we will explore the architecture and components that make this innovative solution possible. From data ingestion and AI integration to secure authentication and function calling, we’ll delve into each aspect in detail. Our goal is to share insights and knowledge that can help others build similar solutions, ultimately enhancing the customer service experience for everyone.
-
-## Architecture
+### Customer query on products
 
 
-<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vapnr6ncvq2n07q1425n.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vapnr6ncvq2n07q1425n.gif">
- <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vapnr6ncvq2n07q1425n.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vapnr6ncvq2n07q1425n.gif" width="1700">
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif" width="1700">
  </a>
 
-## Data Flow
+- When a user asks a product-related query, such as "Can you compare the various TV packages available?", the system begins processing the request.
+- Along with the user's prompt, a list of available tools is sent to the Language Learning Model (LLM).
+- The LLM recognizes the need to generate vector embeddings for the query, and these embeddings are sent back to the application.
+- The generated embeddings are used to perform a vector search against Azure Cosmos DB to retrieve relevant product information from the database.
+- The retrieved documents are then sent back to the LLM.
+- The LLM responds to the user, providing information based on the query and the relevant data fetched from the database.
 
-### Document Intelligence Process
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yd7ms9fjoinyjawvdt6s.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yd7ms9fjoinyjawvdt6s.png">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yd7ms9fjoinyjawvdt6s.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yd7ms9fjoinyjawvdt6s.png" width="1700">
+ </a>
 
-The idea behind this process was to scrape the website or generate some potential dummy FAQs related to Telekom services using ChatGPT. I then compiled all the possible FAQs into a PDF.
 
-- First, I analyzed the PDF using the Azure Document Intelligence Studio and found that the Layout model was the best fit for this case.
-- Next, I created a Data Ingestor using an Azure Function HTTP trigger to upload the file and extract relevant information with the Azure Document Intelligence service client.
-- The content was then semantically chunked based on their headings and stored as separate chunks in Azure CosmosDB for MongoDB vCore, within a collection called "KnowledgeBase."
+```ts
+        const productsRetrieverTool = new DynamicTool({
+            name: "products_retriever_tool",
+            description: `Searches DTDL customercare product information for similar products based on the question. 
+                    Returns the product information in JSON format.`,
+            func: async (input) => await retrieverChain.invoke(input),
+        });       
+```
 
-A separate blog detailing how to create this will be provided in the next blog of this series.
 
-### General query flow
+### Customer query on specific product
 
-#### FAQ Query Flow
 
-- For general queries, the query is transformed into an embedding format using the embedding Ada model.
-- The query is then subjected to a vector search on the FAQ collection, which we chunked and stored in our Azure CosmosDB for Mongo vCore during our earlier process.
-- We retrieve the top k relevant documents from this search and provide them to the LLM.
-- Finally, the LLM responds to the customer.
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif" width="1700">
+ </a>
 
-#### Products Query Flow
-- If the query pertains to product information, it is transformed into an embedding format and a vector search is performed on the Products collection.
-- We retrieve the top k relevant documents from this search and provide them to the LLM.
-- Finally, the LLM responds to the customer.
+- The user initiates the process by prompting the system with a query related to their past order, specifying the order ID. This prompt sets the stage for retrieving personal order information.
 
-### Past order query flow
+- Along with the user's query, the system sends a list of available tools to the Language Learning Model (LLM). This list helps the LLM determine which actions to take next based on the user's request.
 
-- If the query is customer-specific, we start by obtaining the phone number via the agent.
-- We then generate an OTP and store it in the database.
-- The generated OTP is sent to the customer via the Twilio SMS API.
-- The customer is prompted to input the OTP for verification.
-- The customer inputs the OTP.
-- We verify the OTP against the database and, upon successful verification, fetch the customer-related information.
-- Once the information is retrieved, it is added to the LLM context.
-- Finally, the LLM responds to the past order or customer-specific query.
+- Recognizing that the query involves sensitive personal information, the LLM understands from the system prompt that authentication is necessary to proceed. This step ensures that only the rightful user can access their order details.
 
+- To authenticate the user, the LLM asks the customer to provide their phone number. This is a crucial step for initiating the verification process.
+
+- The user then provides their phone number, which the system will use to send an OTP (One-Time Password) for verification purposes.
+
+- The provided phone number, along with the list of available tools, is sent back to the LLM. This allows the LLM to make an informed decision on which tool to use next.
+
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2j4un6aab44wfedfm4yq.png" width="1700">
+ </a>
+
+
+
+- The LLM selects the otp_generation_tool for user authentication and passes the phone number as a parameter to this tool. This tool is responsible for generating the OTP.
+
+- The otp_generation_tool generates an OTP and sends it to the user's phone number via the Twilio SMS API. It also stores the OTP in the database alongside the phone number for later verification.
+
+- Twilio sends the OTP to the customer’s phone number via SMS. This step ensures that the user receives the OTP promptly.
+
+- The customer receives the OTP and inputs it into the chatbot. This input is necessary for verifying their identity.
+
+- The entered OTP, along with the previous chat history and the list of available tools, is sent back to the LLM. This allows the LLM to decide on the next action based on the current context.
+
+- The LLM then selects the otp_verification_tool to validate the OTP. It passes both the phone number and the OTP as parameters to this function. The verification tool checks if the provided OTP matches the one stored in the database.
+
+- The otp_verification_tool verifies the OTP against the stored information. If the OTP is valid, the LLM proceeds to retrieve the user's order details.
+
+- To fetch the order details, the LLM uses the specific_order_tool, providing the phone number and order ID as inputs. This tool queries Azure CosmosDB for the relevant order information.
+
+- The specific_order_tool retrieves the order details from Azure CosmosDB using the provided phone number and order ID. This step ensures that the correct order information is obtained.
+
+- Once the order details are retrieved, they are sent back to the LLM. This information is necessary for the LLM to formulate a response.
+
+- Finally, the LLM formats the response with the fetched order details and sends it back to the customer. This completes the process, providing the customer with the information they requested in a secure and efficient manner.
+
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" width="1700">
+ </a>
 
 ## Source code
 
@@ -83,4 +111,3 @@ A separate blog detailing how to create this will be provided in the next blog o
 <a href="https://dghx6mmczrmj4mk-web.azurewebsites.net/">https://dghx6mmczrmj4mk-web.azurewebsites.net/</a> 
 
 > <b>CAUTION :</b> If the site is slow, it is due to the serverless infrastructure used for this application.
-
