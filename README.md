@@ -56,7 +56,7 @@ We built DTDL-Customercare using the following key components:
 <a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png">
  <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" width="1700">
  </a>
- 
+
  ## Data Flow
 
 ### Document Intelligence Process
@@ -93,11 +93,6 @@ A separate blog detailing how to create this will be provided in the next blog o
 - We verify the OTP against the database and, upon successful verification, fetch the customer-related information.
 - Once the information is retrieved, it is added to the LLM context.
 - Finally, the LLM responds to the past order or customer-specific query.
-
-
-## Source code
-
- <a href="https://github.com/Cloud-Jas/Dtdl-CustomerCare"> DTDL-CustomerCare </a>
 
 ## Live URL
 

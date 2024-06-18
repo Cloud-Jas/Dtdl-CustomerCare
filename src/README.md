@@ -102,10 +102,6 @@ This allows us to connect with external data source and bring in more context to
  <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9rad27rowwlc3la1zgd8.png" width="1700">
  </a>
 
-## Source code
-
- <a href="https://github.com/Cloud-Jas/Dtdl-CustomerCare"> DTDL-CustomerCare </a>
-
 ## Live URL
 
 <a href="https://dghx6mmczrmj4mk-web.azurewebsites.net/">https://dghx6mmczrmj4mk-web.azurewebsites.net/</a> 
