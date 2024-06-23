@@ -25,13 +25,14 @@ This allows us to connect with external data source and bring in more context to
 ### Customer query on products
 
 
-<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif">
- <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fx2eu27dpt7qx513hwe4.gif" width="1700">
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zwduwxjk96yfe1idz9vt.png" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zwduwxjk96yfe1idz9vt.png">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zwduwxjk96yfe1idz9vt.png" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zwduwxjk96yfe1idz9vt.png" width="1700">
  </a>
 
 - When a user asks a product-related query, such as "Can you compare the various TV packages available?", the system begins processing the request.
 - Along with the user's prompt, a list of available tools is sent to the Language Learning Model (LLM).
-- The LLM recognizes the need to generate vector embeddings for the query, and these embeddings are sent back to the application.
+- LLM decides to pick Products_retriever_tool 
+- Then LLM recognizes the need to generate vector embeddings for the query, and these embeddings are sent back to the application.
 - The generated embeddings are used to perform a vector search against Azure Cosmos DB to retrieve relevant product information from the database.
 - The retrieved documents are then sent back to the LLM.
 - The LLM responds to the user, providing information based on the query and the relevant data fetched from the database.
@@ -51,7 +52,8 @@ This allows us to connect with external data source and bring in more context to
 ```
 
 
-### Customer query on specific product
+### Customer query on their past specific order
+
 
 
 <a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mvgpholwo649acag5omn.gif">
