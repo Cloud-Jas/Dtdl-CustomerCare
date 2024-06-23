@@ -13,8 +13,8 @@ For more info visit <a href="https://python.langchain.com/v0.1/docs/modules/agen
 
 ## Function calling
 
-<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif">
- <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zslgm89bs2k2jc8wfts7.gif" width="1700">
+<a class="lightgallery" href="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vf9jxhevurnycjyygoev.gif" title="Image description" data-thumbnail="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vf9jxhevurnycjyygoev.gif">
+ <img class="lazyautosizes lazyloaded" data-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vf9jxhevurnycjyygoev.gif" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vf9jxhevurnycjyygoev.gif" width="1700">
  </a>
 
 
