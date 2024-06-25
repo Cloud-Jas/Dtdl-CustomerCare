@@ -94,6 +94,10 @@ A separate blog detailing how to create this will be provided in the next blog o
 - Once the information is retrieved, it is added to the LLM context.
 - Finally, the LLM responds to the past order or customer-specific query.
 
+## FAQ PDF 
+
+FAQ PDF used for preprocessing is uploaded in docs folder
+
 ## Live URL
 
 <a href="https://dghx6mmczrmj4mk-web.azurewebsites.net/">https://dghx6mmczrmj4mk-web.azurewebsites.net/</a> 
