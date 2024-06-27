@@ -103,11 +103,11 @@ class DtdlCustomerCareAIAgent {
     {
         const systemSummarizationMessage = `
         
-        You are a helpful assistant for Deutsche Telekom's customer care assistant.
+        Provide Short summary on the conversation between user and assistant. 
 
-        You are designed to Summarize conversation between User and Assitant
+        It should be maximum 2 to 3 lines in points wherever necessary.
 
-        Provide What are the highlights on the conversation between User and Assitant and if required Follow up actions
+        Then provide What are the highlights on the conversation between User and Assitant and if required any Follow up actions
 
         `
 
@@ -180,25 +180,29 @@ class DtdlCustomerCareAIAgent {
         
         1. Ask for the customer's phone number: "Could you please provide your phone number, so we can authorize?"
         
-        2. Upon receiving the number if valid, say: "Thank you for sharing your number. You will receive an OTP in a moment. Please input it to proceed further." else any error say: "Thank you for sharing your number. However we are currently facing some issues, please try again later."
+        2. Upon receiving the phone number check if it is valid and customer is available in our system. If present address him with the name retreived or else let user know that you couldn't find them in the system"
 
         3. Now make a call to otp_generation_tool provided in your tools to generate OTP
-        
-        4. If they provide the OTP make a call to otp_validation_tool for validating the OTP against phone number and it's expiration, respond with either: "Thank you for choosing Deutsche Telekom" if authorized, or "Sorry, we couldn't authorize you. Please enter a valid OTP" if not authorized.
 
-        5. If it is a valid OTP make a call to specific_order_tool for fetching information about a Order given it's ID and phonenumber        
+        4. Start addressing the customer by his name retreived earlier
+        
+        5. If they provide the OTP make a call to otp_validation_tool for validating the OTP against phone number and it's expiration, respond with either: "Thank you for choosing Deutsche Telekom" if authorized, or "Sorry, we couldn't authorize you. Please enter a valid OTP" if not authorized.
+
+        6. If it is a valid OTP make a call to specific_order_tool for fetching information about a Order given it's ID and phonenumber        
 
         For inquiries about any past orders, follow below process:
         
         1. Ask for the customer's phone number: "Could you please provide your phone number, so we can authorize?"
         
-        2. Upon receiving the number if valid, say: "Thank you for sharing your number. You will receive an OTP in a moment. Please input it to proceed further." else any error say: "Thank you for sharing your number. However we are currently facing some issues, please try again later."
+        2. Upon receiving the phone number check if it is valid and customer is available in our system. If present address him with the name retreived or else let user know that you couldn't find them in the system"
 
         3. Now make a call to otp_generation_tool provided in your tools to generate OTP
-        
-        4. If they provide the OTP make a call to otp_validation_tool for validating the OTP against phone number and it's expiration, respond with either: "Thank you for choosing Deutsche Telekom" if authorized, or "Sorry, we couldn't authorize you. Please enter a valid OTP" if not authorized.
 
-        5. If it is a valid OTP make a call to past_orders_tool for fetching information about all past orders of a customer based on phonenumber        
+        4. Start addressing the customer by his name retreived earlier
+        
+        5. If they provide the OTP make a call to otp_validation_tool for validating the OTP against phone number and it's expiration, respond with either: "Thank you for choosing Deutsche Telekom" if authorized, or "Sorry, we couldn't authorize you. Please enter a valid OTP" if not authorized.
+
+        6. If it is a valid OTP make a call to past_orders_tool for fetching information about all past orders of a customer based on phonenumber        
 
         Don't ask for successive OTP verification if it is already validated before.
         
@@ -315,6 +319,35 @@ class DtdlCustomerCareAIAgent {
         });
         
 
+        const phoneNumberValidationTool = new DynamicTool({
+            name: "phoneNumber_validation_tool",
+            description: `Validate the phonenumber in database, to check if the customer is available in the system, returns firstname if present and returns error if not present`,
+            func: async (input) => {
+                // Split the input to get phone number
+                const phoneNumber = input.trim();
+        
+                if (!phoneNumber) {
+                    throw new Error("Invalid input format. Expected a phone number");
+                }
+        
+                // Connect to the database
+                const db = this.dbClient.db("dtdl-customercare");
+                const customers = db.collection("customers");
+                const sales = db.collection("sales");
+        
+                // Fetch the customer entry for the given phone number
+                const customer = await customers.findOne({ "phoneNumber":phoneNumber });
+        
+                if (!customer) {
+                    return "Customer not found";
+                }
+                    
+                const customerName = customer.firstName;
+    
+                return JSON.stringify(customerName, null, '\t');
+            },
+        });
+
         const otpGenerationTool = new DynamicTool({
             name: "otp_generation_tool",
             description: `Generates and sends an OTP with the provided user's phone.`,
@@ -369,7 +402,7 @@ class DtdlCustomerCareAIAgent {
         
         // Generate OpenAI function metadata to provide to the LLM
         // The LLM will use this metadata to decide which tool to use based on the description.
-        const tools = [productsRetrieverTool, faqsRetrieverTool,productLookupTool,otpGenerationTool,otpValidationTool,customerPastOrdersTool,customerSpecificOrderTool];
+        const tools = [productsRetrieverTool, phoneNumberValidationTool, faqsRetrieverTool,productLookupTool,otpGenerationTool,otpValidationTool,customerPastOrdersTool,customerSpecificOrderTool];
         const modelWithFunctions = this.chatModel.bind({
             functions: tools.map((tool) => convertToOpenAIFunction(tool)),
         });
